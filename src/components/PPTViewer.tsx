@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import type { User, Slide } from '../types';
-import { ChevronLeft, ChevronRight, Play, Square, Maximize2 } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, Square } from 'lucide-react';
 
 interface Props {
   currentUser: User;
@@ -46,7 +46,7 @@ const SLIDES: Slide[] = [
   },
 ];
 
-export default function PPTViewer({ currentUser, users, onSlideChange }: Props) {
+export default function PPTViewer({ currentUser: _currentUser, users, onSlideChange }: Props) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [presenting, setPresenting] = useState(false);
 

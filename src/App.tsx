@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import type { User, DocMode, ChatMessage, ChatThread, BroadcastEvent } from './types';
 import { useCollaboration } from './hooks/useCollaboration';
 import TopBar from './components/TopBar';

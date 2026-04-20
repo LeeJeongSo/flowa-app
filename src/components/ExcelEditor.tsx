@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import type { User, ExcelCell } from '../types';
 
 interface Props {
@@ -63,7 +63,7 @@ const INITIAL_DATA: Record<string, ExcelCell> = {
   'B9': { value: '마케팅비 절감으로 전체 예산 1% 절약 성공' },
 };
 
-export default function ExcelEditor({ currentUser, users, onCellChange }: Props) {
+export default function ExcelEditor({ currentUser: _currentUser, users, onCellChange }: Props) {
   const [data, setData] = useState<Record<string, ExcelCell>>(INITIAL_DATA);
   const [selected, setSelected] = useState<string | null>('A1');
   const [editing, setEditing] = useState<string | null>(null);
@@ -132,7 +132,7 @@ export default function ExcelEditor({ currentUser, users, onCellChange }: Props)
       </div>
 
       {/* Grid */}
-      <div style={{ flex: 1, overflowAuto: 'auto', overflow: 'auto' }}>
+      <div style={{ flex: 1, overflow: 'auto' }}>
         <table style={{
           borderCollapse: 'collapse',
           tableLayout: 'fixed',

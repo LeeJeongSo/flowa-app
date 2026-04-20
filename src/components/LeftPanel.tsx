@@ -1,6 +1,5 @@
-import React from 'react';
 import type { User } from '../types';
-import { FileText, Table2, Presentation, Clock, ChevronRight } from 'lucide-react';
+import { FileText, Table2, Presentation, Clock } from 'lucide-react';
 
 interface Props {
   users: User[];
@@ -20,7 +19,7 @@ const TIMELINE = [
   { user: '소연', color: '#F59E0B', action: '문서 접속', time: '14:15' },
 ];
 
-export default function LeftPanel({ users, currentUser }: Props) {
+export default function LeftPanel({ users, currentUser: _currentUser }: Props) {
   return (
     <aside style={{
       width: 240,

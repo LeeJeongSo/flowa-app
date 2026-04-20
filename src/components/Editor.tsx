@@ -1,13 +1,13 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Placeholder from '@tiptap/extension-placeholder';
 import Highlight from '@tiptap/extension-highlight';
 import type { User } from '../types';
 import {
-  Bold, Italic, Underline as UnderlineIcon, Strikethrough,
+  Bold, Italic, Strikethrough,
   List, ListOrdered, Quote, Code, Minus, Heading1, Heading2, Heading3,
-  AlignLeft, AlignCenter, AlignRight, Undo, Redo,
+  Undo, Redo,
 } from 'lucide-react';
 
 interface Props {
@@ -74,7 +74,7 @@ const Divider = () => (
   <div style={{ width: 1, height: 20, background: '#E2E8F0', margin: '0 2px' }} />
 );
 
-export default function Editor({ currentUser, users, onContentChange, remoteContent, onCursorMove }: Props) {
+export default function Editor({ currentUser: _currentUser, users, onContentChange, remoteContent, onCursorMove }: Props) {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   const editor = useEditor({
@@ -94,7 +94,7 @@ export default function Editor({ currentUser, users, onContentChange, remoteCont
     if (remoteContent && editor && !editor.isFocused) {
       const current = editor.getHTML();
       if (current !== remoteContent) {
-        editor.commands.setContent(remoteContent, false);
+        editor.commands.setContent(remoteContent);
       }
     }
   }, [remoteContent, editor]);

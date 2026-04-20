@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
-import type { ChatMessage, ChatThread, User } from '../types';
+import { useState, useRef, useEffect } from 'react';
+import type { ChatThread, User } from '../types';
 import { Send, X, CheckCircle, MessageCircle } from 'lucide-react';
 
 interface Props {

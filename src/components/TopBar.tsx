@@ -1,6 +1,5 @@
-import React from 'react';
 import type { DocMode, User } from '../types';
-import { FileText, Table2, Presentation, Zap, Users, Bell } from 'lucide-react';
+import { FileText, Table2, Presentation, Zap, Bell } from 'lucide-react';
 
 interface Props {
   mode: DocMode;

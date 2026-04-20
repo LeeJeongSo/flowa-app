@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import type { User, ChatMessage } from '../types';
-import { Send, Users, MessageCircle, Zap, Volume2, VolumeX, Eye, Edit3 } from 'lucide-react';
+import { Send, Users, MessageCircle, Zap, VolumeX, Eye, Edit3 } from 'lucide-react';
 
 interface Props {
   users: User[];
