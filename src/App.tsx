@@ -42,6 +42,7 @@ const DEMO_MESSAGES: ChatMessage[] = [
 export default function App() {
   const [currentUser] = useState<User>(pickCurrentUser);
   const [mode, setMode] = useState<DocMode>('word');
+  const [activeDoc, setActiveDoc] = useState('4월 팀 회의록');
   const [remoteUsers, setRemoteUsers] = useState<User[]>([]);
   const [messages, setMessages] = useState<ChatMessage[]>(DEMO_MESSAGES);
   const [threads, setThreads] = useState<ChatThread[]>([]);
@@ -91,7 +92,14 @@ export default function App() {
 
   const { broadcast } = useCollaboration(currentUser, handleEvent);
 
+  const handleFileSelect = useCallback((name: string, newMode: DocMode) => {
+    setMode(newMode);
+    setActiveDoc(name);
+    broadcast('gaze', { doc: name });
+  }, [broadcast]);
+
   useEffect(() => {
+    setActiveDoc(DOC_NAMES[mode]);
     broadcast('gaze', { doc: DOC_NAMES[mode] });
   }, [mode]);
 
@@ -172,7 +180,12 @@ export default function App() {
       />
 
       <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
-        <LeftPanel users={remoteUsers} currentUser={currentUser} />
+        <LeftPanel
+          users={remoteUsers}
+          currentUser={currentUser}
+          activeDoc={activeDoc}
+          onFileSelect={handleFileSelect}
+        />
 
         <main style={{ flex: 1, overflow: 'hidden', position: 'relative' }} ref={editorWrapRef}>
           {mode === 'word' && (
